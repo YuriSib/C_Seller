@@ -20,7 +20,10 @@ class AvitoParse:
     @staticmethod
     def settings():
         options = webdriver.ChromeOptions()
+        options.add_argument("--no-sandbox")
+        # options.binary_location = '/usr/bin/google-chrome'
         # options.add_argument("--headless")
+        options.headless = True
         options.add_argument("start-maximized")
 
         options.add_experimental_option("excludeSwitches", ["enable-automation"])
@@ -28,7 +31,6 @@ class AvitoParse:
         options.add_experimental_option('excludeSwitches', ['enable-logging'])
         options.add_experimental_option('useAutomationExtension', False)
         driver = webdriver.Chrome(options=options)
-
         stealth(driver,
                 languages=["en-US", "en"],
                 vendor="Google Inc.",
